@@ -1,0 +1,10 @@
+url = "localhost:3000"
+
+[scores]
+path = "/api/scores"
+method = "GET"
+
+[createUser]
+path = "/api/users"
+method = "POST"
+body = { name = "Jamie", role = "admin" }

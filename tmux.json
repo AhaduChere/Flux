@@ -1,0 +1,22 @@
+{
+  "session_name": "Flux",
+  "windows": [
+    {
+      "options": {},
+      "window_name": "Dev",
+      "layout": "c6d4,213x52,0,0{141x52,0,0,0,71x52,142,0[71x26,142,0,2,71x25,142,27,3]}",
+      "panes": [
+        {
+          "shell_command": ["nvim"]
+        },
+        {
+          "focus": "true"
+        },
+        {
+          "shell_command": ["cd testserver", "clear && npm start"]
+        }
+      ],
+      "focus": "true"
+    }
+  ]
+}
