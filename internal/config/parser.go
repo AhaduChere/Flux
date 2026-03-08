@@ -5,13 +5,14 @@ import (
 )
 
 type Endpoint struct {
-	Path   string `toml:"path"`
-	Method string `toml:"method"`
+	Path   string            `toml:"path"`
+	Method string            `toml:"method"`
+	Body   map[string]string `toml:"body"`
 }
 
 type Config struct {
 	URL       string              `toml:"url"`
-	Endpoints map[string]Endpoint `toml:"endpoints"`
+	Endpoints map[string]Endpoint `toml:"req"`
 }
 
 // NOTE: Reads Fluxfile

@@ -3,6 +3,7 @@ package request
 import (
 	"io"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -18,12 +19,18 @@ type Response struct {
 	Body       string
 }
 
+// NOTE: Sends request and returns response
 func SendRequest(Request Request) (Response, error) {
 	startime := time.Now()
-	req, err := http.NewRequest(Request.Method, Request.URL, nil)
+	var bodyReader io.Reader
+	if Request.Body != nil {
+		bodyReader = strings.NewReader(*Request.Body)
+	}
+	req, err := http.NewRequest(Request.Method, Request.URL, bodyReader)
 	if err != nil {
 		return Response{}, err
 	}
+	req.Header.Set("Content-Type", "application/json")
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {

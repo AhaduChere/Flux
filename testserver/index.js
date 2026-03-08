@@ -3,6 +3,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/api/scores", (req, res) => {
+  console.log("scores requested");
   res.json({
     scores: [
       { user: "Jamie", score: 984 },
@@ -14,6 +15,7 @@ app.get("/api/scores", (req, res) => {
 
 app.post("/api/users", (req, res) => {
   const { name, role } = req.body;
+  console.log("new user made:", req.body);
   res.status(201).json({ id: 3, name, role });
 });
 

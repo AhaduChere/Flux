@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"flux/internal/config"
 	"flux/internal/output"
 	"flux/internal/request"
@@ -28,10 +29,21 @@ var Program = &cobra.Command{
 			return
 		}
 		// NOTE: Build the request
+		var bodyStr *string
+		if len(endpoint.Body) > 0 {
+			bodyBytes, err := json.Marshal(endpoint.Body)
+			if err != nil {
+				fmt.Println("Failed to encode body")
+				return
+			}
+			s := string(bodyBytes)
+			bodyStr = &s
+		}
+
 		req := request.Request{
 			URL:    cfg.URL + endpoint.Path,
 			Method: endpoint.Method,
-			Body:   nil,
+			Body:   bodyStr,
 		}
 		// NOTE: Send the request
 		rep, err := request.SendRequest(req)
