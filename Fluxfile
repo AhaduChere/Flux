@@ -1,10 +1,10 @@
-url = "localhost:3000"
+url = "http://localhost:3000"
 
-[scores]
+[endpoints.scores]
 path = "/api/scores"
 method = "GET"
 
-[createUser]
+[endpoints.createUser]
 path = "/api/users"
 method = "POST"
 body = { name = "Jamie", role = "admin" }

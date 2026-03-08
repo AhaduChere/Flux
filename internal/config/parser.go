@@ -2,17 +2,16 @@ package config
 
 import (
 	"github.com/BurntSushi/toml"
-	"os"
 )
 
 type Endpoint struct {
-	Path   string
-	Method string
+	Path   string `toml:"path"`
+	Method string `toml:"method"`
 }
 
 type Config struct {
-	URL       string
-	Endpoints map[string]Endpoint
+	URL       string              `toml:"url"`
+	Endpoints map[string]Endpoint `toml:"endpoints"`
 }
 
 // NOTE: Reads Fluxfile
